@@ -24,7 +24,7 @@ class FlickrIntegrationAPI < Grape::API
     namespace :photoset do
       #/all
       get :all do
-        user_id = '32874531@N04'
+        user_id = ENV['APP_FLICKR_USER_ID']
         photosets = []
         flickr.photosets.getList(user_id: user_id).each do |photoset|
           photosets.push(photoset.to_hash)
